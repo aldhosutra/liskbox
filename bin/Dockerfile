@@ -21,4 +21,4 @@ RUN apt-get -y install nano
 
 WORKDIR /app
 
-CMD /etc/init.d/postgresql restart && sh
+CMD /etc/init.d/postgresql restart && sudo -u lisk -i sh
