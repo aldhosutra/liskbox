@@ -17,7 +17,7 @@ COPY ./lisksdk.sh /app/.lisksdk.sh
 RUN sudo -S chmod +x /app/.setup.sh
 RUN sudo -S chmod +x /app/.lisksdk.sh
 RUN sudo -S /app/.setup.sh $LISK_PASSWORD
-RUN su lisk -- /app/.lisksdk.sh
+RUN su lisk -- /app/.lisksdk.sh $LISK_PASSWORD
 RUN sudo -S chown lisk /app
 
 RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/10/main/pg_hba.conf

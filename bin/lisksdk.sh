@@ -10,3 +10,7 @@ nvm install 12.15.0
 
 npm install pm2 -g
 npm install --global --production lisk-commander
+
+echo $1 | sudo -S ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node"
+echo $1 | sudo -S ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
+echo $1 | sudo -S ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/lisk" "/usr/local/bin/lisk"
