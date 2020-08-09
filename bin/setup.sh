@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sudo useradd -m lisk && echo "lisk:password" | chpasswd
+if ! id -u lisk > /dev/null 2>&1; then
+    sudo adduser --disabled-password --gecos '' lisk && usermod -a -G sudo lisk && echo "lisk:$1" | chpasswd
+fi
 
 sudo apt-get purge -y postgres* 
 sudo apt-get update
@@ -22,10 +24,4 @@ sudo pg_dropcluster --stop 10 main
 sudo pg_createcluster --locale en_US.UTF-8 --start 10 main
 sudo -u postgres -i createuser --createdb lisk
 sudo -u postgres -i createdb lisk_dev --owner lisk
-sudo -u postgres psql -d lisk_dev -c "alter user lisk with password 'password';"
-
-sudo -u lisk -i
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo npm install pm2 -g
-sudo npm install lisk-sdk@3.0.2
+sudo -u postgres psql -d lisk_dev -c "alter user lisk with password '$1';"
