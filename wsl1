@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if sudo docker -H localhost:2375 build --build-arg LISK_PASSWORD=password --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) --tag liskbox:latest ./bin ; then
+if sudo docker -H localhost:2375 build --tag liskbox:latest ./bin ; then
     sudo docker -H localhost:2375 stop liskbox
 	sudo docker -H localhost:2375 rm liskbox
 	sudo docker -H localhost:2375 run -ti -v "$(pwd)/app":/app -p 5000:5000 -p 4000:4000 -p 4001:4001 -p 80:80 -p 6001:6001 --name liskbox liskbox 
