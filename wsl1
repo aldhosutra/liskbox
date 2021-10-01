@@ -6,6 +6,7 @@ if sudo docker -H localhost:2375 build --tag liskbox:latest ./bin ; then
 	sudo docker -H localhost:2375 run -ti -v "$(pwd)/app":/app -p 5000:5000 -p 4000:4000 -p 4001:4001 -p 80:80 -p 6001:6001 --name liskbox liskbox 
 else
     echo "Make Sure to Install Docker, and Setup Host, Follow: https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4";
+    echo "Then, make sure new line is correct: sed -i 's/\r$//' {filename}"
     echo "Also make sure to change mount point to / instead /mnt, Follow: https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly#ensure-volume-mounts-work";
     echo "Lisbox Build Failed"
 fi
