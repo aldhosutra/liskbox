@@ -9,4 +9,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 nvm install v12.22.3
 
+npm config set user 0
+npm config set unsafe-perm true
+
 npm install --global lisk-commander
