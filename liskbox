@@ -4,7 +4,7 @@ sudo systemctl start docker
 if sudo docker build --tag liskbox:latest ./bin ; then
     sudo docker stop liskbox
 	sudo docker rm liskbox
-	sudo docker run -ti -v "$(pwd)/app":/app -p 5000:5000 -p 4000:4000 -p 4001:4001 -p 80:80 -p 6001:6001 --name liskbox liskbox
+	sudo docker run -ti -v "$(pwd)/app":/app -p 5000:5000 -p 4000:4000 -p 4001:4001 -p 4005:4005 -p 80:80 -p 6001:6001 --name liskbox liskbox
 else
     echo "Lisbox Build Failed"
 fi

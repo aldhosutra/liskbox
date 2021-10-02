@@ -3,7 +3,7 @@
 if sudo docker -H localhost:2375 build --tag liskbox:latest ./bin ; then
     sudo docker -H localhost:2375 stop liskbox
 	sudo docker -H localhost:2375 rm liskbox
-	sudo docker -H localhost:2375 run -ti -v "$(pwd)/app":/app -p 5000:5000 -p 4000:4000 -p 4001:4001 -p 80:80 -p 6001:6001 --name liskbox liskbox 
+	sudo docker -H localhost:2375 run -ti -v "$(pwd)/app":/app -p 5000:5000 -p 4000:4000 -p 4001:4001 -p 4005:4005 -p 80:80 -p 6001:6001 --name liskbox liskbox 
 else
     echo "Make Sure to Install Docker, and Setup Host, Follow: https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4";
     echo "Then, make sure new line is correct: [sed -i 's/\r$//' {filename}] or [git grep -l '\r$' | xargs sed -i 's/\r$//']"
